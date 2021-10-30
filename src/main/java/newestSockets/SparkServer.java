@@ -14,15 +14,15 @@ public class SparkServer {
     public static void main(String[] args) throws KeyStoreException, IOException, CertificateException, NoSuchAlgorithmException {
         String absolutePath = System.getenv("OPENSHIFT_REPO_DIR");
         System.out.println(absolutePath);
-        String keyStorePath = "src/main/resources/KeyStore.jks";
-        String pass = "123456";
-
-        String trustStorePath = "src/main/resources/truststore.jks";
-
-        KeyStore keystore = KeyStore.getInstance("JKS");
-        keystore.load(new FileInputStream(keyStorePath), pass.toCharArray());
-
-        secure(keyStorePath, pass, trustStorePath, pass);
+//        String keyStorePath = "src/main/resources/KeyStore.jks";
+//        String pass = "123456";
+//
+//        String trustStorePath = "src/main/resources/truststore.jks";
+//
+//        KeyStore keystore = KeyStore.getInstance("JKS");
+//        keystore.load(new FileInputStream(keyStorePath), pass.toCharArray());
+//
+//        secure(keyStorePath, pass, trustStorePath, pass);
 //        port(getOCPort());
 //        webSocket("/socket", SparkSocketServer.class);
         staticFiles.location("web");
