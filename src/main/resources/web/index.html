@@ -1,7 +1,8 @@
 <body>
 <h1>hello</h1>
 <script>
-        const websocket = new WebSocket("ws://localhost:5555");
+        const URL = "ws://localhost:4567/socket";
+        const websocket = new WebSocket(URL);
 
         websocket.onopen = function (event) {
             websocket.send("Here's some text that the server is urgently awaiting!");

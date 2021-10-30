@@ -14,20 +14,30 @@ public class SparkServer {
     public static void main(String[] args) throws KeyStoreException, IOException, CertificateException, NoSuchAlgorithmException {
         String absolutePath = System.getenv("OPENSHIFT_REPO_DIR");
         System.out.println(absolutePath);
-//        String keyStorePath = "src/main/resources/KeyStore.jks";
-//        String pass = "123456";
-//
-//        String trustStorePath = "src/main/resources/truststore.jks";
-//
-//        KeyStore keystore = KeyStore.getInstance("JKS");
-//        keystore.load(new FileInputStream(keyStorePath), pass.toCharArray());
-//
-//        secure(keyStorePath, pass, trustStorePath, pass);
+        String keyStorePath = "src/main/resources/KeyStore.jks";
+        String pass = "123456";
 
+        String trustStorePath = "src/main/resources/truststore.jks";
+
+        KeyStore keystore = KeyStore.getInstance("JKS");
+        keystore.load(new FileInputStream(keyStorePath), pass.toCharArray());
+
+        secure(keyStorePath, pass, trustStorePath, pass);
+//        port(getOCPort());
+//        webSocket("/socket", SparkSocketServer.class);
         staticFiles.location("web");
         get("/hello", (req, res) -> "Hello World");
 
         SimpleServer socketServer = new SimpleServer(5555);
         socketServer.start();
+    }
+
+
+    static int getOCPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 8080; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 }
