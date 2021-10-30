@@ -8,6 +8,8 @@
             websocket.send("Here's some text that the server is urgently awaiting!");
         };
 
+        websocket.onmessage = (msg) => console.log("got a message");
+
 
 </script>
 </body>

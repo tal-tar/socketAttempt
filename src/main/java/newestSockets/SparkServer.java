@@ -24,12 +24,12 @@ public class SparkServer {
 //
 //        secure(keyStorePath, pass, trustStorePath, pass);
 //        port(getOCPort());
-//        webSocket("/socket", SparkSocketServer.class);
+        webSocket("/socket", SparkSocketServer.class);
         staticFiles.location("web");
         get("/hello", (req, res) -> "Hello World");
 
-        SimpleServer socketServer = new SimpleServer(5555);
-        socketServer.start();
+//        SimpleServer socketServer = new SimpleServer(5555);
+//        socketServer.start();
     }
 
 
