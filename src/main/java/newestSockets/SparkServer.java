@@ -20,8 +20,6 @@ public class SparkServer {
         KeyStore keystore = KeyStore.getInstance("JKS");
         keystore.load(new FileInputStream(keyStorePath), pass.toCharArray());
 
-        System.out.println(SparkServer.class.getResource(keyStorePath));
-
         secure(keyStorePath, pass, trustStorePath, pass);
 //        port(getOCPort());
         webSocket("/socket", SparkSocketServer.class);
