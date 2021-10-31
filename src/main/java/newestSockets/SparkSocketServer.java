@@ -24,7 +24,7 @@ public class SparkSocketServer {
     }
 
     @OnWebSocketMessage
-    public void message(Session session, String message) throws IOException {
+    public void message(Session session, String message) throws IOException, InterruptedException {
         System.out.println("Got: " + message);   // Print message
         session.getRemote().sendString(message); // and send it back
     }
